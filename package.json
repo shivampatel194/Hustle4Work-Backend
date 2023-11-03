@@ -1,0 +1,26 @@
+{
+  "name": "hustel3work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Konu9712/Hustel3Work.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Konu9712/Hustel3Work/issues"
+  },
+  "homepage": "https://github.com/Konu9712/Hustel3Work#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "~4.16.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.3"
+  }
+}
