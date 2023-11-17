@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const user = require("./user");
+const { use } = require("../routes/jobRoutes");
 
 const jobSchema = new mongoose.Schema({
 
@@ -29,6 +31,7 @@ const jobSchema = new mongoose.Schema({
     uploadDate : {
         type : String
     },
+    appliedUser: [user],
 
     userID : {
         type : mongoose.Schema.Types.ObjectId,
