@@ -11,4 +11,3 @@ jobRouter.post("/createJob", auth, createJob);
 module.exports = jobRouter;
 
 
-

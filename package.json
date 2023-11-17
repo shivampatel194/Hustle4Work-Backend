@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,11 @@
     "bcrypt": "^5.1.1",
     "express": "~4.16.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.5.3"
+    "mongoose": "^7.5.3",
+    "nodemailer": "^6.9.7",
+    "otp-generator": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

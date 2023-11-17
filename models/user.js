@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
     isEmployer : {
         type : Boolean,
         default : false
+    },
+    otp : {
+        type : String,
+        default: ""
     }
 }, {timestamps : true});
 
