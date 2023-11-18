@@ -1,5 +1,5 @@
 const express = require("express");
-const { signin, signup, resetPass, setNewPass, jobApply } = require("../controllers/userController");
+const { signin, signup, resetPass, setNewPass, jobApply, getUserJob } = require("../controllers/userController");
 const userRouter = express.Router();
 
 userRouter.get("/", (req, res) => {
@@ -14,6 +14,8 @@ userRouter.post("/forgetpassword", resetPass);
 
 userRouter.post("/resetPassword", setNewPass);
 
-userRouter.post("/JobApply", jobApply)
+userRouter.post("/JobApply", jobApply);
+
+userRouter.get("/getUserJob", getUserJob);
 
 module.exports = userRouter;

@@ -204,7 +204,7 @@ const sendOtpMail = async (name, email, code) => {
 
         if(job){
 
-            await jobmodel.findByIdAndUpdate({_id:job._id},{$set : {appliedUser :  appliedUSer}});
+            await jobmodel.findByIdAndUpdate({_id:job._id},{$push : {appliedUser :  appliedUSer}});
             return res.status(200).json({message : "job has been successfully applied!"});
 
         } else {
@@ -222,4 +222,20 @@ const sendOtpMail = async (name, email, code) => {
 
 
   }
-module.exports = {signin , signup, resetPass, setNewPass, jobApply};
+
+  const getUserJob = async (req,res)=>{
+
+    try {
+      const jobs = await jobmodel.find({ userId: req.userId });
+
+      if (jobs.length > 0) {
+          return res.status(200).json({ jobs: jobs });
+      } else {
+          return res.status(404).json({ message: "No jobs found for the user." });
+      }
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Something went wrong!" });
+  }
+  }
+module.exports = {signin , signup, resetPass, setNewPass, jobApply, getUserJob};

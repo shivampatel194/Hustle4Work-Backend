@@ -31,7 +31,7 @@ const jobSchema = new mongoose.Schema({
     uploadDate : {
         type : String
     },
-    appliedUser: [user],
+    appliedUser:  [],
 
     userID : {
         type : mongoose.Schema.Types.ObjectId,
