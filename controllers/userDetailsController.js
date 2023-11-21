@@ -1,4 +1,7 @@
 const userModel = require("../models/userData");
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
+
 
 const createUserData = async (req,res)=> {
     console.log("check");
@@ -7,14 +10,14 @@ const createUserData = async (req,res)=> {
     const {username, email, phoneNumber, address, qualification, skills, experience} = req.body;
 
  const newData = new userModel ({
+    _id: req.userId,
     username : username,
     email : email,
     phoneNumber : phoneNumber,
     address : address,
     qualification : qualification,
     skills : skills,
-    experience : experience,
-    userId : req.userId
+    experience : experience
  });
     
  try {
@@ -78,17 +81,24 @@ const updateUserData = async (req, res) => {
 
 const getAllUserData = async (req,res) => {
 
+    const userId = req.userId;
+    console.log("userId", typeof userId);
+
+
     try {
-        const userData = await userModel.find();
-        res.status(200).json(userData);
-
-        
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({message : "Something went wrong!"});
-        
-    }
-
+        const userData = await userModel.findById({ _id: userId });
+        console.log("userData", userData);
+      
+        if (userData) {
+          res.status(200).json(userData);
+        } else {
+          console.log("User not found");
+          res.status(404).json({ message: "User not found" });
+        }
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Something went wrong!" });
+      }
 }
 
 module.exports = {

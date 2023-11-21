@@ -3,7 +3,7 @@ const { getAllUserData, createUserData, deleteUserData, updateUserData } = requi
 const auth = require("../middlewares/auth");
  const userDataRoutes = express.Router();
 
- userDataRoutes.get("/" , auth, getAllUserData);
+ userDataRoutes.get("/" ,auth, getAllUserData);
 
  userDataRoutes.post("/createUserData", auth, createUserData);
 

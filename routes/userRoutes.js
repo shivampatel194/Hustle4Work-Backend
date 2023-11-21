@@ -3,9 +3,8 @@ const { signin, signup, resetPass, setNewPass, jobApply, getUserJob } = require(
 const userRouter = express.Router();
 
 userRouter.get("/", (req, res) => {
-  res.send("hello from user router");
+  res.send("hello from user router sdfd");
 });
-
 userRouter.post("/signin", signin);
 
 userRouter.post("/signup", signup);
@@ -16,6 +15,6 @@ userRouter.post("/resetPassword", setNewPass);
 
 userRouter.post("/JobApply", jobApply);
 
-userRouter.get("/getUserJob", getUserJob);
+userRouter.get("/getUserJob", getUserJob)
 
 module.exports = userRouter;
