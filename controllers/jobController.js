@@ -7,6 +7,7 @@ const createJob = async (req,res)=> {
     const {title,description,location,requirements,payRate,jobType,uploadDate} = req.body;
 
     const newJob = new jobModel({
+        userID : req.userId,
         title : title,
         description : description,
         location : location,
