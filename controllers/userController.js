@@ -216,9 +216,10 @@ const sendOtpMail = async (name, email, code) => {
   }
 
   const getUserJob = async (req,res)=>{
+    console.log("userId",req.userId);
 
     try {
-      const jobs = await jobmodel.find({ userId: req.userId });
+      const jobs = await jobmodel.find({ userID : req.userId });
 
       if (jobs.length > 0) {
           return res.status(200).json({ jobs: jobs });
