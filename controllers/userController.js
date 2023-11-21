@@ -11,8 +11,6 @@ const user = require("../models/user");
 const jobmodel = require("../models/job");
 const SECKRET_KEY = "Hustle4work";
 
-
-
 const signup = async (req,res)=>{
 
     const {username, email, password, address, phonenumber, isEmployer} = req.body;
@@ -38,7 +36,9 @@ const signup = async (req,res)=>{
             isEmployer : isEmployer
         });
 
+        
         const token = jwt.sign({email : result.email, id : result._id}, SECKRET_KEY);
+        console.log("in controller",token)
 
         res.status(201).json({
             user : result,
@@ -50,8 +50,6 @@ const signup = async (req,res)=>{
         console.log(error);
         res.status(500).json({message : "Something went wrong!"});
     }
-
-
 };
 
 const signin = async (req,res)=>  {
@@ -171,20 +169,14 @@ const sendOtpMail = async (name, email, code) => {
             const newPass =  await bcrypt.hash(password,10);
             await userModel.findByIdAndUpdate({_id: user._id}, {$set: {password: newPass, otp: ""}}, {new : true});
            console.log("newPass" , newPass);
-           return res.status(200).json({ message: "password has been successfully updated!" });
-
-    
+           return res.status(200).json({ message: "password has been successfully updated!" });    
         } else {
           res.status(200).json({ message: "this code has been expired!" });
         }
-
     } catch (error) {
         console.log(error);
         
     }
-   
-
-
   }
 
 
